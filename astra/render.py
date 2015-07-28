@@ -4,10 +4,13 @@
 import vtk
 from numpy import *
 
-filename = "output.raw"
-nx = 65
-ny = 125
-nz = 125
+basename = "output"
+infofile = basename+".txt"
+filename = basename+".raw"
+f = open(infofile,"r")
+nx,ny,nz = [int(x) for x in f.readline().split()]
+f.close()
+print nx,ny,nz
 data = fromfile(filename, dtype=float)
  
 # We begin by creating the data we want to render.
